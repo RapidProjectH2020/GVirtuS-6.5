@@ -599,7 +599,7 @@ CUDA_ROUTINE_HANDLER(MemcpyAsync) {
                     cerr << e << endl;
                     return new Result(cudaErrorMemoryAllocation);
                 }
-                exit_code = cudaMemcpy(dst, src, count, kind);
+                exit_code = cudaMemcpyAsync(dst, src, count, kind, stream);
                 result = new Result(exit_code);
                 break;
             case cudaMemcpyDeviceToHost:
@@ -613,7 +613,7 @@ CUDA_ROUTINE_HANDLER(MemcpyAsync) {
                     cerr << e << endl;
                     return new Result(cudaErrorMemoryAllocation);
                 }
-                exit_code = cudaMemcpy(dst, src, count, kind);
+                exit_code = cudaMemcpyAsync(dst, src, count, kind, stream);
                 try {
                     out = new Buffer();
                     out->Add<char>((char *) dst, count);

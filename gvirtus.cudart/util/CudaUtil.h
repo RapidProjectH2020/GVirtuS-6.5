@@ -46,6 +46,8 @@
 
 #include "Buffer.h"
 
+//#define DEBUG
+
 /**
  * CudaUtil contains facility functions used by gVirtuS. These functions
  * includes the ones for marshalling and unmarshalling pointers and "CUDA fat
